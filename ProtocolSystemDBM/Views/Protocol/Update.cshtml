@@ -1,0 +1,74 @@
+﻿@model ProtocolSystemDBM.ViewModels.Protocols.UpdateProtocolViewModel
+@{
+    ViewData["Title"] = "Gestão de Protocolos";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-5 text-center">Edição de Protocolo</h2>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+
+            <form method="post" action="/protocol/update">
+                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="Title" name="Title" value="@Model.Title" placeholder="Título do Protocolo" required />
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" id="Description" name="Description" placeholder="Descrição do Protocolo" required>@Model.Description</textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="OpeningDate" class="form-label">Data de Abertura</label>
+                    <input type="date" class="form-control" id="OpeningDate" name="OpeningDate" value="@Model.OpeningDate.ToString("yyyy-MM-dd")" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="OpeningDate" class="form-label">Data de Encerramento (Opcional. Preencher somente quando for um protocolo já encerrado.)</label>
+                    <input type="date" class="form-control" id="ClosingDate" name="ClosingDate" value="@Model.ClosingDate?.ToString("yyyy-MM-dd")" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="UserId" class="form-label">Usuário Responsável</label>
+                    <select class="form-control" id="UserId" name="UserId" required>
+                        <option value="">Selecione um usuário</option>
+                        @foreach (var user in Model.Users)
+                        {
+                            <option value="@user.Id" selected="@(user.Id == Model.UserId ? "selected" : null)">
+                                @user.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="ProtocolStatusId" class="form-label">Status do Protocolo</label>
+                    <select class="form-control" id="ProtocolStatusId" name="ProtocolStatusId" required>
+                        <option value="">Selecione um status</option>
+                        @foreach (var status in Model.ProtocolStatuses)
+                        {
+                            <option value="@status.Id" selected="@(status.Id == Model.ProtocolStatusId ? "selected" : null)">
+                                @status.Name
+                            </option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>

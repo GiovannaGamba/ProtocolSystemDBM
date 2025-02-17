@@ -1,0 +1,47 @@
+﻿@model ProtocolSystemDBM.ViewModels.Users.UpdateUserViewModel
+@{
+    ViewData["Title"] = "Gestão de Clientes";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-5 text-center">Edição de Cliente</h2>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+
+            <form method="post" action="/user/update">
+
+                <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" placeholder="Nome (ex: João Silva)" required />
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" placeholder="Email (ex: joaosilva@email.com)" required />
+                </div>
+
+                <div class="mb-3">
+                    <input type="tel" class="form-control" id="Phone" name="Phone" value="@Model.Phone" placeholder="Telefone (ex: 41998893449)" required />
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="Address" name="Address" value="@Model.Address" placeholder="Endereço (ex: Rua João Silva, 228)" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>

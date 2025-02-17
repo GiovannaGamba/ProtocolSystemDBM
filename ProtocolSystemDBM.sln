@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolSystemDBM", "ProtocolSystemDBM\ProtocolSystemDBM.csproj", "{92479064-2E44-4811-B381-E1AD78B618F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92479064-2E44-4811-B381-E1AD78B618F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92479064-2E44-4811-B381-E1AD78B618F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92479064-2E44-4811-B381-E1AD78B618F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92479064-2E44-4811-B381-E1AD78B618F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BD5382D-835D-434E-A33C-28009D1EF5A2}
+	EndGlobalSection
+EndGlobal

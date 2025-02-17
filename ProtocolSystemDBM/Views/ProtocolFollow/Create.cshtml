@@ -1,0 +1,37 @@
+﻿@model ProtocolSystemDBM.ViewModels.ProtocolFollows.RegisterProtocolFollowViewModel
+@{
+    ViewData["Title"] = "Acompanhamento de Protocolos";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-5 text-center">Cadastro de Ação de Protocolo</h2>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+            <form method="post" action="/protocolfollow/create">
+                <input type="hidden" id="ProtocolId" name="ProtocolId" value="@Model.ProtocolId" />
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="ActionDescription" name="ActionDescription" value="@Model.ActionDescription" placeholder="Descrição da Ação" required />
+                </div>
+
+                <div class="mb-3">
+                    <input type="datetime-local" class="form-control" id="ActionDate" name="ActionDate" value="@Model.ActionDate.ToString("yyyy-MM-ddTHH:mm")" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
